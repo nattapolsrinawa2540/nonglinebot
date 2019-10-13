@@ -112,7 +112,7 @@ function handleMessageEvent(event) {
 
         }
     }
-    else if (eventText ==='REPORT') {
+    else if (eventText === 'report') {
 
 
         db.all("SELECT * FROM question", [], (err, row) => {
