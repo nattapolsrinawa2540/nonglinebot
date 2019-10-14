@@ -129,7 +129,8 @@ function handleMessageEvent(event) {
              console.log(JSON.stringify(row));
            }
            console.log(`this is = ${result}`);
-           request({
+         });
+        request({
             method: 'POST',
             uri: 'https://notify-api.line.me/api/notify',
             header: {
@@ -151,10 +152,8 @@ function handleMessageEvent(event) {
 
         msg={
             'type':'text',
-            'text': `this is eventext=${data.id}`
+            'text': data.id
         }
-         });
-        
         
     } else if (eventText === 'ทุนวิจัย') {
         msg = {
