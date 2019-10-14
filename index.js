@@ -119,17 +119,17 @@ function handleMessageEvent(event) {
     }
     else if (eventText === 'report') {
 
-
-        // clientDB.query(SDB,(err, resDB) => {
-        //    // resDBult.push(resDB.rows)
-        //     data.id=JSON.stringify(resDB.rows)
-        //     if (err) throw err;
-        //     for (let row of resDB.rows) {
-                
-        //       console.log(JSON.stringify(row));
-        //     }
-        //     console.log(`this is = ${result}`);
-        //   });
+        let result = []
+        clientDB.query(SDB,(err, resDB) => {
+           result.push(resDB.rows)
+           data.id=JSON.stringify(result)
+           if (err) throw err;
+           for (let row of resDB.rows) {
+               
+             console.log(JSON.stringify(row));
+           }
+           console.log(`this is = ${result}`);
+         });
         request({
             method: 'POST',
             uri: 'https://notify-api.line.me/api/notify',
@@ -140,7 +140,7 @@ function handleMessageEvent(event) {
                 bearer: 'KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv', //token
             },
             form: {
-                message: 'this is eventext=', //ข้อความที่จะส่ง
+                message: `this is eventext=${data.id}`, //ข้อความที่จะส่ง
             },
         }, (err, httpResponse, body) => {
             if (err) {
@@ -152,7 +152,7 @@ function handleMessageEvent(event) {
 
         msg={
             'type':'text',
-            'text':data.id
+            'text': `this is eventext=${data.id}`
         }
         
     } else if (eventText === 'ทุนวิจัย') {
