@@ -13,7 +13,9 @@ const app = express();
 //const  CTB = 'CREATE TABLE question(id SERIAL PRIMARY KEY,question VARCHAR NOT NULL);'
  const IDB = "INSERT INTO question (question) VALUES ($1)"
  const SDB = "select * from question"
-
+const data = {
+    id:null
+}
 
 app.get("/data",async (req, res) => {
     //let data = [];
@@ -131,31 +133,31 @@ function handleMessageEvent(event) {
                 
               console.log(JSON.stringify(row));
             }
-            request({
-                method: 'POST',
-                uri: 'https://notify-api.line.me/api/notify',
-                header: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                auth: {
-                    bearer: 'KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv', //token
-                },
-                form: {
-                    message: `this is eventext=${resData.rows}`, //ข้อความที่จะส่ง
-                },
-            }, (err, httpResponse, body) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(body)
-                }
-            })
+            data.id=JSON.stringify(resData.rows)
             res.status(200).json(resData.rows)
             console.log(`this is = ${result}`);
            // clientDB.end();
           });
      
-
+        request({
+            method: 'POST',
+            uri: 'https://notify-api.line.me/api/notify',
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            auth: {
+                bearer: 'KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv', //token
+            },
+            form: {
+                message: `this is eventext=${data.id}`, //ข้อความที่จะส่ง
+            },
+        }, (err, httpResponse, body) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(body)
+            }
+        })
 
         msg={
             'type':'text',
