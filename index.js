@@ -121,13 +121,14 @@ function handleMessageEvent(event) {
 
         let result = []
         clientDB.query(SDB,(err, resDB) => {
-           result.push(resDB.rows)
-           data.id=JSON.stringify(result)
+           
+           
            if (err) throw err;
            for (let row of resDB.rows) {
-               
+            result.push(row)
              console.log(JSON.stringify(row));
            }
+           data.id=JSON.stringify(result)
            console.log(`this is = ${result}`);
          });
         request({
