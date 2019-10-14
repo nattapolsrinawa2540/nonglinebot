@@ -13,6 +13,7 @@ const app = express();
 const data = {
     id:null
 }
+const IDB = "INSERT INTO question (name) VALUES ($1)"
 const SDB = "select * from question"
 clientDB.connect();
 app.get('/data', (req, res) => {
@@ -241,12 +242,16 @@ function handleMessageEvent(event) {
             type: 'text',
             text: 'น้องบอทสามารถตอบคำถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด'
         };
-        // if (eventText!== "hello, world" && eventText!== null) {
-        //     db.all("INSERT INTO  question(question) VALUES(?)", [eventText], (err) => {
-        //         if(err) console.dir(err.message);
-    
-        //     });
-        // }
+        if (eventText!== "hello, world" && eventText!== null) {
+           //   clientDB.connect();
+    clientDB.query(IDB,[eventText],(err, resDB) => {
+        if (err) throw err;
+        for (let row of resDB.rows) {
+          console.log(JSON.stringify(row));
+        }
+        clientDB.end();
+      });
+        }
       
     }
 
