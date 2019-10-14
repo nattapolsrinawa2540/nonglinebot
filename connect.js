@@ -6,7 +6,9 @@ const client = new Client({
 });
 
 
-
+const  CTB = 'CREATE TABLE question(id SERIAL PRIMARY KEY,question VARCHAR NOT NULL);'
+ const IDB = "INSERT INTO question (name) VALUES ($1)"
+ 
 // // client.query(CTB,(err, res) => {
 // //   if (err) throw err;
 // //   for (let row of res.rows) {

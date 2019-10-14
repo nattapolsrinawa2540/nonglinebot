@@ -13,7 +13,7 @@ const app = express();
 const data = {
     id:null
 }
-
+const SDB = "select * from question"
 app.get('/data', (req, res) => {
     client.connect();
         let result = []
@@ -120,7 +120,7 @@ function handleMessageEvent(event) {
 
 
         client.query(SDB,(err, resDB) => {
-            resDBult.push(resDB.rows)
+           // resDBult.push(resDB.rows)
             data.id=JSON.stringify(resDB.rows)
             if (err) throw err;
             for (let row of resDB.rows) {
