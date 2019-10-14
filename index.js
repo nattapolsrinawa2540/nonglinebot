@@ -10,33 +10,27 @@ require('dotenv').config();
 const {clientDB} = require('./connect')
 const app = express();
 
-//const  CTB = 'CREATE TABLE question(id SERIAL PRIMARY KEY,question VARCHAR NOT NULL);'
- const IDB = "INSERT INTO question (question) VALUES ($1)"
- const SDB = "select * from question"
 const data = {
     id:null
 }
 
-app.get("/data",async (req, res) => {
-    //let data = [];
-    
-    clientDB.connect()
-    let result = []
-     clientDB.query(SDB,(err, resData) => {
+app.get('/data', (req, res) => {
+    client.connect();
+        let result = []
+         client.query(SDB,(err, resDB) => {
+            resDBult.push(resDB.rows)
+            data.id=JSON.stringify(resDB.rows)
+            if (err) throw err;
+            for (let row of resDB.rows) {
+                
+              console.log(JSON.stringify(row));
+            }
+            console.log(`this is = ${result}`);
+          });
+          
         
-        if (err) throw err;
-        for (let row of resData.rows) {
-            
-          console.log(JSON.stringify(row));
-        }
-        res.status(200).json(resData.rows)
-        console.log(`this is = ${result}`);
-       // clientDB.end();
-      });
-      
-     
-      
-    })
+         
+})
 
 const config = {
     channelAccessToken: 'ThXtHfpRU4AJDAQbAXs2UP3QSLzsqXi/TQ5D3nn85jPlrXJmyELlgXRCq1m3a54n7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpSSVhU1e900yQcMZOoV8mhfdqohkHoDwLk88ZeSn4DNQdB04t89/1O/w1cDnyilFU=',
@@ -124,21 +118,17 @@ function handleMessageEvent(event) {
     }
     else if (eventText === 'report') {
 
-        clientDB.connect()
-        let result = []
-         clientDB.query(SDB,(err, resData) => {
-            
+
+        client.query(SDB,(err, resDB) => {
+            resDBult.push(resDB.rows)
+            data.id=JSON.stringify(resDB.rows)
             if (err) throw err;
-            for (let row of resData.rows) {
+            for (let row of resDB.rows) {
                 
               console.log(JSON.stringify(row));
             }
-            data.id=JSON.stringify(resData.rows)
-            res.status(200).json(resData.rows)
             console.log(`this is = ${result}`);
-           // clientDB.end();
           });
-     
         request({
             method: 'POST',
             uri: 'https://notify-api.line.me/api/notify',
@@ -250,14 +240,10 @@ function handleMessageEvent(event) {
             text: 'น้องบอทสามารถตอบคำถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด'
         };
         if (eventText!== "hello, world" && eventText!== null) {
-            clientDB.connect();
-            clientDB.query(IDB,[eventText],(err, resINT) => {
-                if (err) throw err;
-                for (let row of resINT.rows) {
-                  console.log(JSON.stringify(row));
-                }
-              //  clientDB.end();
-              });
+            db.all("INSERT INTO  question(question) VALUES(?)", [eventText], (err) => {
+                if(err) console.dir(err.message);
+    
+            });
         }
       
     }
