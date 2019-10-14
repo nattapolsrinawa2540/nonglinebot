@@ -14,10 +14,11 @@ const data = {
     id:null
 }
 const SDB = "select * from question"
+clientDB.connect();
 app.get('/data', (req, res) => {
-    client.connect();
+   
         let result = []
-         client.query(SDB,(err, resDB) => {
+         clientDB.query(SDB,(err, resDB) => {
             resDBult.push(resDB.rows)
             data.id=JSON.stringify(resDB.rows)
             if (err) throw err;
@@ -119,7 +120,7 @@ function handleMessageEvent(event) {
     else if (eventText === 'report') {
 
 
-        client.query(SDB,(err, resDB) => {
+        clientDB.query(SDB,(err, resDB) => {
            // resDBult.push(resDB.rows)
             data.id=JSON.stringify(resDB.rows)
             if (err) throw err;
