@@ -239,12 +239,12 @@ function handleMessageEvent(event) {
             type: 'text',
             text: 'น้องบอทสามารถตอบคำถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด'
         };
-        if (eventText!== "hello, world" && eventText!== null) {
-            db.all("INSERT INTO  question(question) VALUES(?)", [eventText], (err) => {
-                if(err) console.dir(err.message);
+        // if (eventText!== "hello, world" && eventText!== null) {
+        //     db.all("INSERT INTO  question(question) VALUES(?)", [eventText], (err) => {
+        //         if(err) console.dir(err.message);
     
-            });
-        }
+        //     });
+        // }
       
     }
 
