@@ -7,26 +7,34 @@ const withdraw = require('./withdraw')
 const fund = require('./fund')
 const request = require('request')
 require('dotenv').config();
+const {clientDB} = require('./connect')
 const app = express();
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./demo1.sqlite", err => {
-    console.log(err);
-})
-// console.log(MSG.data1)
-//console.log(address.MSG);
 
-const data = {
-    id: null
-}
-app.get('/data', (req, res) => {
-    db.all("SELECT * FROM question", [], (err, row) => {
-        // console.dir(row);
-        data.id = JSON.stringify(row)
-        row.map((item) => { console.dir(item) })
-    });
-    res.setHeader('Content-Type', 'application/json');
-  res.send(data.id)
-})
+//const  CTB = 'CREATE TABLE question(id SERIAL PRIMARY KEY,question VARCHAR NOT NULL);'
+ const IDB = "INSERT INTO question (question) VALUES ($1)"
+ const SDB = "select * from question"
+
+
+app.get("/data",async (req, res) => {
+    //let data = [];
+    
+    clientDB.connect()
+    let result = []
+     clientDB.query(SDB,(err, resData) => {
+        
+        if (err) throw err;
+        for (let row of resData.rows) {
+            
+          console.log(JSON.stringify(row));
+        }
+        res.status(200).json(resData.rows)
+        console.log(`this is = ${result}`);
+       // clientDB.end();
+      });
+      
+     
+      
+    })
 
 const config = {
     channelAccessToken: 'ThXtHfpRU4AJDAQbAXs2UP3QSLzsqXi/TQ5D3nn85jPlrXJmyELlgXRCq1m3a54n7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpSSVhU1e900yQcMZOoV8mhfdqohkHoDwLk88ZeSn4DNQdB04t89/1O/w1cDnyilFU=',
@@ -114,31 +122,40 @@ function handleMessageEvent(event) {
     }
     else if (eventText === 'report') {
 
-
-        db.all("SELECT * FROM question", [], (err, row) => {
-            // console.dir(row);
-            data.id = JSON.stringify(row)
-            // row.map((item) => { console.dir(item) })
-        });
-        request({
-            method: 'POST',
-            uri: 'https://notify-api.line.me/api/notify',
-            header: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            auth: {
-                bearer: 'KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv', //token
-            },
-            form: {
-                message: `this is eventext=${data.id}`, //ข้อความที่จะส่ง
-            },
-        }, (err, httpResponse, body) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log(body)
+        clientDB.connect()
+        let result = []
+         clientDB.query(SDB,(err, resData) => {
+            
+            if (err) throw err;
+            for (let row of resData.rows) {
+                
+              console.log(JSON.stringify(row));
             }
-        })
+            request({
+                method: 'POST',
+                uri: 'https://notify-api.line.me/api/notify',
+                header: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                auth: {
+                    bearer: 'KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv', //token
+                },
+                form: {
+                    message: `this is eventext=${resData.rows}`, //ข้อความที่จะส่ง
+                },
+            }, (err, httpResponse, body) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(body)
+                }
+            })
+            res.status(200).json(resData.rows)
+            console.log(`this is = ${result}`);
+           // clientDB.end();
+          });
+     
+
 
         msg={
             'type':'text',
@@ -231,10 +248,14 @@ function handleMessageEvent(event) {
             text: 'น้องบอทสามารถตอบคำถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด'
         };
         if (eventText!== "hello, world" && eventText!== null) {
-            db.all("INSERT INTO  question(question) VALUES(?)", [eventText], (err) => {
-                if(err) console.dir(err.message);
-    
-            });
+            clientDB.connect();
+            clientDB.query(IDB,[eventText],(err, resINT) => {
+                if (err) throw err;
+                for (let row of resINT.rows) {
+                  console.log(JSON.stringify(row));
+                }
+              //  clientDB.end();
+              });
         }
       
     }

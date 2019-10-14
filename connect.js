@@ -1,12 +1,62 @@
-// var sqlite3 = require ("sqlite3").verbose();
-// var db = new sqlite3.Database("./demo1.sqlite", err =>{
-//   console.log(err);
-// })
-// db.all("INSERT INTO  question(question) VALUES(?)", ["aaCAkE"], (err) =>{
-//  if(err) console.dir(err.message);
+const { Client } = require('pg');
 
-// });
-// db.all("SELECT * FROM question", [], (err,row) =>{
-//   // console.dir(row);
-//   row.map((item)=>{console.dir(item)}) 
-// });
+const client = new Client({
+  connectionString:'postgres://fsrfogeikfdgbr:8166031667cba5ebc2ffff6e1c0d7f0f29ca98fcd587b8c57c2690049868f2b6@ec2-54-83-202-132.compute-1.amazonaws.com:5432/d1e946iudpinom',
+  ssl: true,
+});
+
+
+
+// // client.query(CTB,(err, res) => {
+// //   if (err) throw err;
+// //   for (let row of res.rows) {
+// //     console.log(JSON.stringify(row));
+// //   }
+// //   client.end();
+// // });
+ 
+// let createData=()=>{
+//     client.connect();
+//     client.query(CTB,(err, res) => {
+//         if (err) throw err;
+//         for (let row of res.rows) {
+//           console.log(JSON.stringify(row));
+//         }
+//         client.end();
+//       });
+// }
+
+// let addData=(params)=>{
+//     client.connect();
+//     client.query(IDB,[params],(err, res) => {
+//         if (err) throw err;
+//         for (let row of res.rows) {
+//           console.log(JSON.stringify(row));
+//         }
+//         client.end();
+//       });
+// }
+// let  getData=()=>{
+//     client.connect();
+//     let result = []
+//      client.query(SDB,(err, res) => {
+//         result.push(res.rows)
+//         if (err) throw err;
+//         for (let row of res.rows) {
+            
+//           console.log(JSON.stringify(row));
+//         }
+       
+//         console.log(`this is = ${result}`);
+//       });
+//       client.end();
+    
+     
+//       return result
+    
+      
+// }
+// createData()
+module.exports= {
+    clientDB:client
+}
