@@ -13,7 +13,7 @@ const app = express();
 const data = {
     id:null
 }
-const IDB = "INSERT INTO question (name) VALUES ($1)"
+const IDB = "INSERT INTO question (question) VALUES ($1)"
 const SDB = "select * from question"
 clientDB.connect();
 app.get('/data', (req, res) => {
