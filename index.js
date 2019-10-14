@@ -249,7 +249,7 @@ function handleMessageEvent(event) {
         for (let row of resDB.rows) {
           console.log(JSON.stringify(row));
         }
-        clientDB.end();
+      //  clientDB.end();
       });
         }
       
