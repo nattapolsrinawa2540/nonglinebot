@@ -139,7 +139,7 @@ function handleMessageEvent(event) {
   } else if (eventText.slice(0,6)==="delete") { 
    
    let delparams = eventText.slice(6, eventText.length);
-   data.id=delparams
+ //  data.id=delparams
    clientDB.query("DELETE FROM question WHERE id=$1", [delparams], (err, resDB)=>{
            if (err) throw err;
     else{
