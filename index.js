@@ -11,7 +11,8 @@ const { clientDB } = require("./connect");
 const app = express();
 
 const data = {
-  id: null
+  id: null,
+  del:null
 };
 const IDB = "INSERT INTO question (question) VALUES ($1)";
 const SDB = "select * from question";
@@ -144,11 +145,11 @@ function handleMessageEvent(event) {
            if (err) throw err;
     else{
        if (resDB.rowCount) {
-             data.id="Delete success"
+             data.del="Delete success"
           
         }
        else{
-            data.id="Delete error"
+            data.del="Delete error"
                
         }
    } 
@@ -178,7 +179,7 @@ function handleMessageEvent(event) {
   
       msg = {
         type: "text",
-        text: data.id
+        text: data.del
       };
 
   } else if (eventText === "report") {
