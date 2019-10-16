@@ -30,14 +30,14 @@ app.get("/data", (req, res) => {
   });
 });
 
-// app.get("/delete/:id", (req, res) => {
-//     let eventText="delete34"
+ app.get("/delete/:id", (req, res) => {
+   //  let eventText="delete34"
 //     let sqlDetele = eventText.slice(0,6);
   
-//     if (eventText.slice(0,6)==="delete") {
-//         console.log('====================================');
-//         console.log(`${sqlDetele} and ${req.params.id}`);
-//         console.log('====================================');
+    //  if (eventText.slice(0,6)==="delete") {
+    //     console.log('====================================');
+    //     console.log(`${eventText.slice(0,6)} and ${req.params.id}`);
+    //     console.log('====================================');
 //     }
 //   let delparams = eventText.slice(6,eventText.length);
 //   console.log('====================================');
@@ -55,7 +55,7 @@ app.get("/data", (req, res) => {
 //     }
     
    
-//   });
+// //   });
   
 // });
 
@@ -136,18 +136,18 @@ function handleMessageEvent(event) {
       type: "text",
       text: query.MSG
     };
-  } else if ((eventText.slice(0,6))==="delete") { 
+  } else if (eventText.slice(0,6)==="delete") { 
     let delparams = eventText.slice(6, eventText.length);
     clientDB.query("DELETE FROM table WHERE id=$1", [delparams], (err, resDB)=>{
            if (err) throw err;
     else{
         if (resDB.rowCount) {
             data.id="Delete success"
-            res.send(`Delete success`);
+          
         }
         else{
             data.id="Delete error"
-                res.send(JSON.stringify(resDB))
+               
         }
     } 
     });
