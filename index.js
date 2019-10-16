@@ -30,7 +30,7 @@ app.get("/data", (req, res) => {
   });
 });
 
- app.get("/delete/:id", (req, res) => {
+//  app.get("/delete/:id", (req, res) => {
    //  let eventText="delete34"
 //     let sqlDetele = eventText.slice(0,6);
   
