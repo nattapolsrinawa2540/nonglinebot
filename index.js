@@ -153,6 +153,10 @@ function handleMessageEvent(event) {
                
         }
    } 
+   msg = {
+    type: "text",
+    text: data.del
+  };
      });
     // request(
     //     {
@@ -177,10 +181,7 @@ function handleMessageEvent(event) {
     //     }
     //   );
   
-      msg = {
-        type: "text",
-        text: data.del
-      };
+     
 
   } else if (eventText === "report") {
     let result = [];
