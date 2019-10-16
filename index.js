@@ -137,42 +137,43 @@ function handleMessageEvent(event) {
       text: query.MSG
     };
   } else if (eventText.slice(0,6)==="delete") { 
-    let delparams = eventText.slice(6, eventText.length);
-    clientDB.query("DELETE FROM table WHERE id=$1", [delparams], (err, resDB)=>{
-           if (err) throw err;
-    else{
-        if (resDB.rowCount) {
-            data.id="Delete success"
+    data.id=eventText
+    // let delparams = eventText.slice(6, eventText.length);
+    // clientDB.query("DELETE FROM table WHERE id=$1", [delparams], (err, resDB)=>{
+    //        if (err) throw err;
+    // else{
+    //     if (resDB.rowCount) {
+    //         data.id="Delete success"
           
-        }
-        else{
-            data.id="Delete error"
+    //     }
+    //     else{
+    //         data.id="Delete error"
                
-        }
-    } 
-    });
-    request(
-        {
-          method: "POST",
-          uri: "https://notify-api.line.me/api/notify",
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          auth: {
-            bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
-          },
-          form: {
-            message: `this is eventext=${data.id}` //ข้อความที่จะส่ง
-          }
-        },
-        (err, httpResponse, body) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(body);
-          }
-        }
-      );
+    //     }
+    // } 
+    // });
+    // request(
+    //     {
+    //       method: "POST",
+    //       uri: "https://notify-api.line.me/api/notify",
+    //       header: {
+    //         "Content-Type": "application/x-www-form-urlencoded"
+    //       },
+    //       auth: {
+    //         bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
+    //       },
+    //       form: {
+    //         message: `this is eventext=${data.id}` //ข้อความที่จะส่ง
+    //       }
+    //     },
+    //     (err, httpResponse, body) => {
+    //       if (err) {
+    //         console.log(err);
+    //       } else {
+    //         console.log(body);
+    //       }
+    //     }
+    //   );
   
       msg = {
         type: "text",
