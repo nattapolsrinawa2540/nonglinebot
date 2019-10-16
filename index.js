@@ -137,8 +137,9 @@ function handleMessageEvent(event) {
       text: query.MSG
     };
   } else if (eventText.slice(0,6)==="delete") { 
-    data.id=eventText
-    // let delparams = eventText.slice(6, eventText.length);
+   
+   let delparams = eventText.slice(6, eventText.length);
+   data.id=delparams
     // clientDB.query("DELETE FROM table WHERE id=$1", [delparams], (err, resDB)=>{
     //        if (err) throw err;
     // else{
