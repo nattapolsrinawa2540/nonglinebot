@@ -97,56 +97,56 @@ async function handleMessageEvent(event) {
       text: address.MSG
       
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สอบถาม") {
     // console.dir();
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สอบถามหน่อยครับ") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สอบถามหน่อยค่ะ") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ถามไรหน่อย") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สวัสดีครับ") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สวัสดีค่ะ") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สวัสดี") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "หวัดดี") {
     let msg = {
       type: "text",
       text: query.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText.slice(0,6)==="delete") { 
    
    let delparams = eventText.slice(6, eventText.length);
@@ -191,7 +191,7 @@ async function handleMessageEvent(event) {
         type: "text",
         text: data.del
       };
-      return msg
+       return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "report") {
     let result = [];
     clientDB.query(SDB, (err, resDB) => {
@@ -230,67 +230,67 @@ async function handleMessageEvent(event) {
       type: "text",
       text: data.id
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ทุนวิจัย") {
     let msg = {
       type: "text",
       text: capital.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ขอรายละเอียดทุนวิจัย") {
     let msg = {
       type: "text",
       text: capital.MSG1
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ทุนวิจัย2564") {
     let msg = {
       type: "text",
       text: capital.MSG2
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ทุนวิจัย2563") {
     let msg = {
       type: "text",
       text: capital.MSG3
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "เบิกเงินวิจัย") {
     let msg = {
       type: "text",
       text: withdraw.MSG
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "ขอรายละเอียดเบิกเงินวิจัย") {
     let msg = {
       type: "text",
       text: withdraw.MSG1
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "เบิกเงินงวดที่1") {
     let msg = {
       type: "text",
       text: withdraw.MSG2
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "เบิกเงินงวดที่2") {
     let msg = {
       type: "text",
       text: withdraw.MSG3
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "เบิกเงินงวดที่3") {
     let msg = {
       type: "text",
       text: withdraw.MSG4
     };
-     return msg
+      return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "กองทุนสนับสนุนงานวิจัย") {
     let msg = {
       type: "text",
       text: fund.MSG
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "คุยกับบอท") {
     let msg = {
       type: "text",
@@ -298,21 +298,21 @@ async function handleMessageEvent(event) {
         "สวัสดีค่ะท่านสามารถสอบถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด\n" +
         "ท่านสามารถดูรายละเอียดโดยการพิมพ์ขอรายละเอียดแต่ละหัวข้อกับน้องบอทได้ เช่น ทุนวิจัย เป็นต้น"
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "สามารถติดต่อได้ทางไหนบ้าง") {
     let msg = {
       type: "text",
       text:
         "สวัสดีค่ะท่านสามารถติดต่อ สถาบันวิจัยและพัฒนา มทร.รัตนโกสินทร์ ได้ตามช่องทางการติดต่อด้านล่างนี้\nFacebook : https://www.facebook.com/irdrmutr\nWebsite : https://ird.rmutr.ac.th\nEmail : ird.r@rmutr.ac.th , irdrmutr@hotmail.co.th\nสามารถติดต่อได้ที่ 02-441-6060 ต่อ 2420-2426"
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "เอกสารดาวน์โหลด") {
     let msg = {
       type: "text",
       text:
         "สวัสดีค่ะท่านสามารถดาวน์โหลดเอกสารต่างๆได้ในลิงค์ด้านล่างนี้\nhttps://ird.rmutr.ac.th/formdownload/ "
     };
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   } else {
     let msg = {
       type: "text",
@@ -329,10 +329,10 @@ async function handleMessageEvent(event) {
         //  clientDB.end();
       });
     }
-    return msg
+     return client.replyMessage(event.replyToken, msg);
   }
 
-  return client.replyMessage(event.replyToken, msg);
+
 }
 
 app.set("port", process.env.PORT || 5000);
