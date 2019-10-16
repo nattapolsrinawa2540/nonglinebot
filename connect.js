@@ -16,7 +16,7 @@ const  CTB = 'CREATE TABLE question(id SERIAL PRIMARY KEY,question VARCHAR NOT N
 // //   }
 // //   client.end();
 // // });
- 
+//  เปิดโค้ตตรงนี้เพื่อสร้าง database
 // let createData=()=>{
 //     client.connect();
 //     client.query(CTB,(err, res) => {
