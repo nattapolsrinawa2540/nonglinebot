@@ -140,19 +140,19 @@ function handleMessageEvent(event) {
    
    let delparams = eventText.slice(6, eventText.length);
    data.id=delparams
-    // clientDB.query("DELETE FROM table WHERE id=$1", [delparams], (err, resDB)=>{
-    //        if (err) throw err;
-    // else{
-    //     if (resDB.rowCount) {
-    //         data.id="Delete success"
+   clientDB.query("DELETE FROM question WHERE id=$1", [delparams], (err, resDB)=>{
+           if (err) throw err;
+    else{
+       if (resDB.rowCount) {
+             data.id="Delete success"
           
-    //     }
-    //     else{
-    //         data.id="Delete error"
+        }
+       else{
+            data.id="Delete error"
                
-    //     }
-    // } 
-    // });
+        }
+   } 
+     });
     // request(
     //     {
     //       method: "POST",
