@@ -156,11 +156,19 @@ async function handleMessageEvent(event) {
     else{
        if (resDB.rowCount) {
              data.del="Delete success"
-          
+             let msg = {
+              type: "text",
+              text: data.del
+            };
+             return client.replyMessage(event.replyToken, msg);
         }
        else{
             data.del="Delete error"
-               
+            let msg = {
+              type: "text",
+              text: data.del
+            };
+             return client.replyMessage(event.replyToken, msg);    
         }
    } 
      });
@@ -187,11 +195,7 @@ async function handleMessageEvent(event) {
         }
       );
   
-      let msg = {
-        type: "text",
-        text: data.del
-      };
-       return client.replyMessage(event.replyToken, msg);
+     
   } else if (eventText === "report") {
     let result = [];
     clientDB.query(SDB, (err, resDB) => {
