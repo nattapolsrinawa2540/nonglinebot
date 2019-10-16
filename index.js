@@ -83,7 +83,7 @@ function handleEvent(event) {
   }
 }
 
-function handleMessageEvent(event) {
+async function handleMessageEvent(event) {
   let msg = {
     type: "text",
     text: "dffd"
@@ -141,7 +141,7 @@ function handleMessageEvent(event) {
    
    let delparams = eventText.slice(6, eventText.length);
  //  data.id=delparams
-   clientDB.query("DELETE FROM question WHERE id=$1", [delparams], (err, resDB)=>{
+   await clientDB.query("DELETE FROM question WHERE id=$1", [delparams], (err, resDB)=>{
            if (err) throw err;
     else{
        if (resDB.rowCount) {
@@ -154,28 +154,28 @@ function handleMessageEvent(event) {
         }
    } 
      });
-    // request(
-    //     {
-    //       method: "POST",
-    //       uri: "https://notify-api.line.me/api/notify",
-    //       header: {
-    //         "Content-Type": "application/x-www-form-urlencoded"
-    //       },
-    //       auth: {
-    //         bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
-    //       },
-    //       form: {
-    //         message: `this is eventext=${data.id}` //ข้อความที่จะส่ง
-    //       }
-    //     },
-    //     (err, httpResponse, body) => {
-    //       if (err) {
-    //         console.log(err);
-    //       } else {
-    //         console.log(body);
-    //       }
-    //     }
-    //   );
+    request(
+        {
+          method: "POST",
+          uri: "https://notify-api.line.me/api/notify",
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          auth: {
+            bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
+          },
+          form: {
+            message: `this is eventext=${data.del}` //ข้อความที่จะส่ง
+          }
+        },
+        (err, httpResponse, body) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(body);
+          }
+        }
+      );
   
       msg = {
         type: "text",
