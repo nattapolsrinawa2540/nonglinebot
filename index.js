@@ -160,6 +160,28 @@ async function handleMessageEvent(event) {
               type: "text",
               text: data.del
             };
+            request(
+              {
+                method: "POST",
+                uri: "https://notify-api.line.me/api/notify",
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                auth: {
+                  bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
+                },
+                form: {
+                  message: `this is eventext=${data.del}` //ข้อความที่จะส่ง
+                }
+              },
+              (err, httpResponse, body) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(body);
+                }
+              }
+            );
              return client.replyMessage(event.replyToken, msg);
         }
        else{
@@ -168,32 +190,33 @@ async function handleMessageEvent(event) {
               type: "text",
               text: data.del
             };
+            request(
+              {
+                method: "POST",
+                uri: "https://notify-api.line.me/api/notify",
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                auth: {
+                  bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
+                },
+                form: {
+                  message: `this is eventext=${data.del}` //ข้อความที่จะส่ง
+                }
+              },
+              (err, httpResponse, body) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log(body);
+                }
+              }
+            );
              return client.replyMessage(event.replyToken, msg);    
         }
    } 
      });
-    request(
-        {
-          method: "POST",
-          uri: "https://notify-api.line.me/api/notify",
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          auth: {
-            bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
-          },
-          form: {
-            message: `this is eventext=${data.del}` //ข้อความที่จะส่ง
-          }
-        },
-        (err, httpResponse, body) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(body);
-          }
-        }
-      );
+   
   
      
   } else if (eventText === "report") {
@@ -206,35 +229,36 @@ async function handleMessageEvent(event) {
       }
       data.id = JSON.stringify(result);
       console.log(`this is = ${result}`);
+      request(
+        {
+          method: "POST",
+          uri: "https://notify-api.line.me/api/notify",
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          auth: {
+            bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
+          },
+          form: {
+            message: `this is eventext=${data.id}` //ข้อความที่จะส่ง
+          }
+        },
+        (err, httpResponse, body) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(body);
+          }
+        }
+      );
+  
+      let msg = {
+        type: "text",
+        text: data.id
+      };
+       return client.replyMessage(event.replyToken, msg);
     });
-    request(
-      {
-        method: "POST",
-        uri: "https://notify-api.line.me/api/notify",
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        auth: {
-          bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
-        },
-        form: {
-          message: `this is eventext=${data.id}` //ข้อความที่จะส่ง
-        }
-      },
-      (err, httpResponse, body) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(body);
-        }
-      }
-    );
-
-    let msg = {
-      type: "text",
-      text: data.id
-    };
-     return client.replyMessage(event.replyToken, msg);
+ 
   } else if (eventText === "ทุนวิจัย") {
     let msg = {
       type: "text",
