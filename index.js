@@ -32,13 +32,11 @@ app.get("/data", (req, res) => {
 });
 
 //  app.get("/delete/:id", (req, res) => {
-   //  let eventText="delete34"
-//     let sqlDetele = eventText.slice(0,6);
+//     let eventText="del  e  te    34"
+//     //let sqlDetele = eventText.slice(0,6);
   
-    //  if (eventText.slice(0,6)==="delete") {
-    //     console.log('====================================');
-    //     console.log(`${eventText.slice(0,6)} and ${req.params.id}`);
-    //     console.log('====================================');
+//      if (eventText.replace(/\s+/g, '').slice(0,6)==="delete") {
+//        res.send(eventText.replace(/\s+/g, ''))
 //     }
 //   let delparams = eventText.slice(6,eventText.length);
 //   console.log('====================================');
@@ -56,9 +54,9 @@ app.get("/data", (req, res) => {
 //     }
     
    
-// //   });
+//   });
   
-// });
+//});
 
 const config = {
   channelAccessToken:
@@ -147,7 +145,7 @@ async function handleMessageEvent(event) {
       text: query.MSG
     };
       return client.replyMessage(event.replyToken, msg);
-  } else if (eventText.slice(0,6)==="delete") { 
+  } else if (eventText.replace(/\s+/g, '').slice(0,6)==="delete") { 
    
    let delparams = eventText.slice(6, eventText.length);
  //  data.id=delparams
