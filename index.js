@@ -266,10 +266,29 @@ async function handleMessageEvent(event) {
   }  else if (eventText === "2") {
     let msg = {
       type: "text",
-      text: withdraw.MSG + withdraw.MSG1 + withdraw.MSG2
+      text: withdraw.MSG
     };
       return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "3") {
+  }  else if (eventText === "2.1") {
+    let msg = {
+      type: "text",
+      text: withdraw.MSG1
+    };
+      return client.replyMessage(event.replyToken, msg);
+  } else if (eventText === "2.2") {
+    let msg = {
+      type: "text",
+      text: withdraw.MSG2
+    };
+      return client.replyMessage(event.replyToken, msg);
+  } else if (eventText === "2.3") {
+    let msg = {
+      type: "text",
+      text: withdraw.MSG3
+    };
+      return client.replyMessage(event.replyToken, msg);
+  }
+  else if (eventText === "3") {
     let msg = {
       type: "text",
       text: fund.MSG
