@@ -89,7 +89,7 @@ async function handleMessageEvent(event) {
 
   let eventText = event.message.text.toLowerCase();
 
-  if (eventText === "ขอที่อยู่") {
+  if (eventText === "5") {
     let  msg = {
       type: "text",
       text: address.MSG
@@ -263,37 +263,13 @@ async function handleMessageEvent(event) {
       text: capital.MSG
     };
       return client.replyMessage(event.replyToken, msg);
-  }  else if (eventText === "เบิกเงินวิจัย") {
+  }  else if (eventText === "2") {
     let msg = {
       type: "text",
       text: withdraw.MSG
     };
       return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "ขอรายละเอียดเบิกเงินวิจัย") {
-    let msg = {
-      type: "text",
-      text: withdraw.MSG1
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "เบิกเงินงวดที่1") {
-    let msg = {
-      type: "text",
-      text: withdraw.MSG2
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "เบิกเงินงวดที่2") {
-    let msg = {
-      type: "text",
-      text: withdraw.MSG3
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "เบิกเงินงวดที่3") {
-    let msg = {
-      type: "text",
-      text: withdraw.MSG4
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "กองทุนสนับสนุนงานวิจัย") {
+  } else if (eventText === "3") {
     let msg = {
       type: "text",
       text: fund.MSG
@@ -306,14 +282,7 @@ async function handleMessageEvent(event) {
       "น้องบอทสามารถตอบคำถามโดยกด\n1.ทุนวิจัย\n2.เบิกเงินวิจัย\n3.กองทุนสนับสนุนงานวิจัย\n4.เอกสารดาวน์โหลด\n5.ที่อยู่"
     };
      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "สามารถติดต่อได้ทางไหนบ้าง") {
-    let msg = {
-      type: "text",
-      text:
-        "สวัสดีค่ะท่านสามารถติดต่อ สถาบันวิจัยและพัฒนา มทร.รัตนโกสินทร์ ได้ตามช่องทางการติดต่อด้านล่างนี้\nFacebook : https://www.facebook.com/irdrmutr\nWebsite : https://ird.rmutr.ac.th\nEmail : ird.r@rmutr.ac.th , irdrmutr@hotmail.co.th\nสามารถติดต่อได้ที่ 02-441-6060 ต่อ 2420-2426"
-    };
-     return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "เอกสารดาวน์โหลด") {
+  }  else if (eventText === "4") {
     let msg = {
       type: "text",
       text:
