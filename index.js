@@ -260,10 +260,7 @@ async function handleMessageEvent(event) {
   } else if (eventText === "1") {
     let msg = {
       type: "text",
-      text: capital.MSG,
-      text : capital.MSG1,
-      text : capital.MSG2,
-      text : capital.MSG3
+      text: capital.MSG
     };
       return client.replyMessage(event.replyToken, msg);
   }  else if (eventText === "เบิกเงินวิจัย") {
