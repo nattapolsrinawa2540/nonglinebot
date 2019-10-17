@@ -82,7 +82,7 @@ function handleEvent(event) {
 }
 
 async function handleMessageEvent(event) {
-  // let let msg = {
+  // let msg = {
   //   type: "text",
   //   text: "dffd"
   // };
@@ -169,7 +169,7 @@ async function handleMessageEvent(event) {
                   bearer: "KkD5Q5KrOjTl9BcwQBxBstj4qZpo8bu0Kk6q9bAPJqv" //token
                 },
                 form: {
-                  message: `this is eventext=${data.del}` //ข้อความที่จะส่ง
+                  message: `this is eventext=${data.del}` //ข้อความที่จะส่ง 
                 }
               },
               (err, httpResponse, body) => {
@@ -257,31 +257,13 @@ async function handleMessageEvent(event) {
        return client.replyMessage(event.replyToken, msg);
     });
  
-  } else if (eventText === "ทุนวิจัย") {
+  } else if (eventText === "1") {
     let msg = {
       type: "text",
-      text: capital.MSG
+      text: capital.MSG.MSG1.MSG2.MSG3
     };
       return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "ขอรายละเอียดทุนวิจัย") {
-    let msg = {
-      type: "text",
-      text: capital.MSG1
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "ทุนวิจัย2564") {
-    let msg = {
-      type: "text",
-      text: capital.MSG2
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "ทุนวิจัย2563") {
-    let msg = {
-      type: "text",
-      text: capital.MSG3
-    };
-      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "เบิกเงินวิจัย") {
+  }  else if (eventText === "เบิกเงินวิจัย") {
     let msg = {
       type: "text",
       text: withdraw.MSG
@@ -343,7 +325,7 @@ async function handleMessageEvent(event) {
     let msg = {
       type: "text",
       text:
-        "น้องบอทสามารถตอบคำถามเกี่ยวกับ\n-ทุนวิจัย\n-เบิกเงินวิจัย\n-กองทุนสนับสนุนงานวิจัย\n-เอกสารดาวน์โหลด"
+        "น้องบอทสามารถตอบคำถามโดยกด\n1.ทุนวิจัย\n2.เบิกเงินวิจัย\n3.กองทุนสนับสนุนงานวิจัย\n4.เอกสารดาวน์โหลด\n5.ที่อยู่"
     };
     if (eventText !== "hello, world" && eventText !== null) {
       //   clientDB.connect();
