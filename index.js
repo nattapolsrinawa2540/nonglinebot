@@ -266,7 +266,7 @@ async function handleMessageEvent(event) {
   }  else if (eventText === "2") {
     let msg = {
       type: "text",
-      text: withdraw.MSG
+      text: withdraw.MSG + withdraw.MSG1 + withdraw.MSG2
     };
       return client.replyMessage(event.replyToken, msg);
   } else if (eventText === "3") {
