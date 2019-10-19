@@ -5,11 +5,12 @@ const query = require("./query");
 const capital = require("./capital");
 const withdraw = require("./withdraw");
 const fund = require("./fund");
+let cors = require('cors')
 const request = require("request");
 require("dotenv").config();
 const { clientDB } = require("./connect");
 const app = express();
-
+app.use(cors())
 const data = {
   id: null,
   del:null
