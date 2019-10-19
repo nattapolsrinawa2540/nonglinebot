@@ -61,8 +61,8 @@ app.get("/data", (req, res) => {
 
 const config = {
   channelAccessToken:
-    "ThXtHfpRU4AJDAQbAXs2UP3QSLzsqXi/TQ5D3nn85jPlrXJmyELlgXRCq1m3a54n7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpSSVhU1e900yQcMZOoV8mhfdqohkHoDwLk88ZeSn4DNQdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "0d3c6048012faf01cf74af21a7a85631"
+    "lMSAhV4Wd84PehIdimEzl2wCUZpMep9Q5hzgk3+6vEE0VTmiZuWoaSzxwzYzpImN7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLokz8mtHgC5HS6CPJWSywIxl/bwn4vImohFU6RbDwOo6wdB04t89/1O/w1cDnyilFU=",
+  channelSecret: "1a6178df12a2e99b6a525da2e2481c6f"
 };
 
 const client = new line.Client(config);
