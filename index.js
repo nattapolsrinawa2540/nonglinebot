@@ -60,8 +60,7 @@ app.get("/data", (req, res) => {
 });
 
 const config = {
-  channelAccessToken:
-    "lMSAhV4Wd84PehIdimEzl2wCUZpMep9Q5hzgk3+6vEE0VTmiZuWoaSzxwzYzpImN7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLokz8mtHgC5HS6CPJWSywIxl/bwn4vImohFU6RbDwOo6wdB04t89/1O/w1cDnyilFU=",
+  channelAccessToken:"lMSAhV4Wd84PehIdimEzl2wCUZpMep9Q5hzgk3+6vEE0VTmiZuWoaSzxwzYzpImN7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLokz8mtHgC5HS6CPJWSywIxl/bwn4vImohFU6RbDwOo6wdB04t89/1O/w1cDnyilFU=",
   channelSecret: "1a6178df12a2e99b6a525da2e2481c6f"
 };
 
