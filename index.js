@@ -13,9 +13,7 @@ const { clientDB } = require("./connect");
 const app = express();
 app.use(cors())
 // app.use(express.json());
-// app.use(bodyParser.urlencoded({
-//   extended: false
-// }))
+app.use(bodyParser.json())
 const data = {
   id: null,
   del:null
@@ -39,9 +37,9 @@ app.get("/data", (req, res) => {
 
  app.post("/delete", (req, res) => {
    
-  // console.log('====================================');
-  // //console.log(`this value =${delparams}`);
-  // console.log('====================================');
+  console.log('====================================');
+  //console.log(`this value =${delparams}`);
+  console.log('====================================');
   clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
     if (err) throw err;
     else{
@@ -55,6 +53,9 @@ app.get("/data", (req, res) => {
     
    
   });
+  // console.log(req.body);
+  
+  // res.send(req.body)
   
   
 });
