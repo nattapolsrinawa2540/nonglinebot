@@ -12,7 +12,6 @@ require("dotenv").config();
 const { clientDB } = require("./connect");
 const app = express();
 app.use(cors())
-// app.use(express.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }))
