@@ -12,10 +12,10 @@ require("dotenv").config();
 const { clientDB } = require("./connect");
 const app = express();
 app.use(cors())
-app.use(express.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+// app.use(express.json());
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }))
 const data = {
   id: null,
   del:null
@@ -37,27 +37,27 @@ app.get("/data", (req, res) => {
   });
 });
 
-//  app.post("/delete", (req, res) => {
+ app.post("/delete", (req, res) => {
    
-//   // console.log('====================================');
-//   // //console.log(`this value =${delparams}`);
-//   // console.log('====================================');
-//   clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
-//     if (err) throw err;
-//     else{
-//         if (resDB.rowCount) {
-//             res.send(`Delete success`);
-//         }
-//         else{
-//                 res.send(JSON.stringify(resDB))
-//         }
-//     }
+  // console.log('====================================');
+  // //console.log(`this value =${delparams}`);
+  // console.log('====================================');
+  clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
+    if (err) throw err;
+    else{
+        if (resDB.rowCount) {
+            res.send(`Delete success`);
+        }
+        else{
+                res.send(JSON.stringify(resDB))
+        }
+    }
     
    
-//   });
+  });
   
   
-// });
+});
 
 
 app.get('/insert', (req, res) => {
@@ -75,7 +75,7 @@ app.get('/insert', (req, res) => {
 
 
 const config = {
-  channelAccessToken:'iCe2xpweK8il5jpHBzhfoRxJSUHfTRKCZP7UT/6XPXMecktuMaa9OS+FbkUK0zX47bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLrA2Byugg+OVafFugxFyZyJfU5/RE7sQd5vxX6IpG2pfgdB04t89/1O/w1cDnyilFU=',
+  channelAccessToken:"iCe2xpweK8il5jpHBzhfoRxJSUHfTRKCZP7UT/6XPXMecktuMaa9OS+FbkUK0zX47bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLrA2Byugg+OVafFugxFyZyJfU5/RE7sQd5vxX6IpG2pfgdB04t89/1O/w1cDnyilFU=",
   channelSecret:'57a649696a5c18e4e05aec7d9a1c0495'
 };
 
