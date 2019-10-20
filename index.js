@@ -37,27 +37,27 @@ app.get("/data", (req, res) => {
   });
 });
 
- app.post("/delete", (req, res) => {
+//  app.post("/delete", (req, res) => {
    
-  // console.log('====================================');
-  // //console.log(`this value =${delparams}`);
-  // console.log('====================================');
-  clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
-    if (err) throw err;
-    else{
-        if (resDB.rowCount) {
-            res.send(`Delete success`);
-        }
-        else{
-                res.send(JSON.stringify(resDB))
-        }
-    }
+//   // console.log('====================================');
+//   // //console.log(`this value =${delparams}`);
+//   // console.log('====================================');
+//   clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
+//     if (err) throw err;
+//     else{
+//         if (resDB.rowCount) {
+//             res.send(`Delete success`);
+//         }
+//         else{
+//                 res.send(JSON.stringify(resDB))
+//         }
+//     }
     
    
-  });
+//   });
   
   
-});
+// });
 
 
 app.get('/insert', (req, res) => {
