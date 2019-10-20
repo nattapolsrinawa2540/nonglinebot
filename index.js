@@ -42,22 +42,22 @@ app.get("/data", (req, res) => {
   // console.log('====================================');
   // //console.log(`this value =${delparams}`);
   // console.log('====================================');
-  // clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
-  //   if (err) throw err;
-  //   else{
-  //       if (resDB.rowCount) {
-  //           res.send(`Delete success`);
-  //       }
-  //       else{
-  //               res.send(JSON.stringify(resDB))
-  //       }
-  //   }
+  clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
+    if (err) throw err;
+    else{
+        if (resDB.rowCount) {
+            res.send(`Delete success`);
+        }
+        else{
+                res.send(JSON.stringify(resDB))
+        }
+    }
     
    
-  // });
-  console.log(req.body);
+  });
+  // console.log(req.body);
   
-  res.send(req.body)
+  // res.send(req.body)
   
   
 });
