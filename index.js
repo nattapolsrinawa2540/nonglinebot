@@ -13,7 +13,9 @@ const { clientDB } = require("./connect");
 const app = express();
 app.use(cors())
 // app.use(express.json());
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 const data = {
   id: null,
   del:null
@@ -36,26 +38,26 @@ app.get("/data", (req, res) => {
 });
 
  app.post("/delete", (req, res) => {
-   
-  console.log('====================================');
-  //console.log(`this value =${delparams}`);
-  console.log('====================================');
-  clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
-    if (err) throw err;
-    else{
-        if (resDB.rowCount) {
-            res.send(`Delete success`);
-        }
-        else{
-                res.send(JSON.stringify(resDB))
-        }
-    }
+ // req.header("Content-Type", "application/json");
+  // console.log('====================================');
+  // //console.log(`this value =${delparams}`);
+  // console.log('====================================');
+  // clientDB.query(`DELETE FROM question WHERE id in (${req.body.data})`, (err, resDB) => {
+  //   if (err) throw err;
+  //   else{
+  //       if (resDB.rowCount) {
+  //           res.send(`Delete success`);
+  //       }
+  //       else{
+  //               res.send(JSON.stringify(resDB))
+  //       }
+  //   }
     
    
-  });
-  // console.log(req.body);
+  // });
+  console.log(req.body);
   
-  // res.send(req.body)
+  res.send(req.body)
   
   
 });
