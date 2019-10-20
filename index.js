@@ -59,9 +59,24 @@ app.get("/data", (req, res) => {
   
 });
 
+
+app.get('/insert', (req, res) => {
+  clientDB.query(IDB, ["กด้กด"], (err, resDB) => {
+    if (err) throw err;
+    for (let row of resDB.rows) {
+      console.log(JSON.stringify(row));
+    }
+    //  clientDB.end();
+  });
+  res.send('GET request to the homepage')
+})
+
+
+
+
 const config = {
-  channelAccessToken:"lMSAhV4Wd84PehIdimEzl2wCUZpMep9Q5hzgk3+6vEE0VTmiZuWoaSzxwzYzpImN7bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLokz8mtHgC5HS6CPJWSywIxl/bwn4vImohFU6RbDwOo6wdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "1a6178df12a2e99b6a525da2e2481c6f"
+  channelAccessToken:"69DN6y+DNvAIpPqrLoLCEtP2cnjLvxnA2mvOR5Va6SBa8a5rMWg6ncmx+dFv1HP77bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpemeaMwqK9JQdLzN87HgOu3goPmAE97AoHUgH22owJZwdB04t89/1O/w1cDnyilFU=",
+  channelSecret: "57a649696a5c18e4e05aec7d9a1c0495"
 };
 
 const client = new line.Client(config);
