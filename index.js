@@ -75,8 +75,8 @@ app.get('/insert', (req, res) => {
 
 
 const config = {
-  channelAccessToken:"69DN6y+DNvAIpPqrLoLCEtP2cnjLvxnA2mvOR5Va6SBa8a5rMWg6ncmx+dFv1HP77bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpemeaMwqK9JQdLzN87HgOu3goPmAE97AoHUgH22owJZwdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "57a649696a5c18e4e05aec7d9a1c0495"
+  channelAccessToken:'69DN6y+DNvAIpPqrLoLCEtP2cnjLvxnA2mvOR5Va6SBa8a5rMWg6ncmx+dFv1HP77bzjjm5rF+y2ABIh4hdY/Mlm452KEu3QUPR/cwR7WLpemeaMwqK9JQdLzN87HgOu3goPmAE97AoHUgH22owJZwdB04t89/1O/w1cDnyilFU=',
+  channelSecret: '57a649696a5c18e4e05aec7d9a1c0495'
 };
 
 const client = new line.Client(config);
