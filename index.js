@@ -345,7 +345,7 @@ async function handleMessageEvent(event) {
       text: capital.MSG
     };
      return client.replyMessage(event.replyToken, msg);
-  }else if (eventText === "สามารถติดต่อได้ทางไหนบ้าง") {
+  }else if (eventText === "สามารถติดต่อได้ที่") {
     let msg = {
       type: "text",
       text: address.MSG
