@@ -327,7 +327,32 @@ async function handleMessageEvent(event) {
       text: fund.MSG
     };
      return client.replyMessage(event.replyToken, msg);
-  } else if (eventText === "คุยกับบอท") {
+  } else if (eventText === "ขอรายละเอียดทุนวิจัย") {
+    let msg = {
+      type: "text",
+      text: capital.MSG
+    };
+     return client.replyMessage(event.replyToken, msg);
+  }else if (eventText === "ขอรายละเอียดเบิกเงินวิจัย") {
+    let msg = {
+      type: "text",
+      text: withdraw.MSG
+    };
+     return client.replyMessage(event.replyToken, msg);
+  }else if (eventText === "กองทุนสนับสนุนงานวิจัย") {
+    let msg = {
+      type: "text",
+      text: capital.MSG
+    };
+     return client.replyMessage(event.replyToken, msg);
+  }else if (eventText === "สามารถติดต่อได้ทางไหนบ้าง") {
+    let msg = {
+      type: "text",
+      text: address.MSG
+    };
+     return client.replyMessage(event.replyToken, msg);
+  }
+  else if (eventText === "คุยกับบอท") {
     let msg = {
       type: "text",
       text:
