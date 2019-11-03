@@ -342,7 +342,7 @@ async function handleMessageEvent(event) {
   }else if (eventText === "กองทุนสนับสนุนงานวิจัย") {
     let msg = {
       type: "text",
-      text: capital.MSG
+      text: fund.MSG
     };
      return client.replyMessage(event.replyToken, msg);
   }else if (eventText === "สามารถติดต่อได้ที่") {
